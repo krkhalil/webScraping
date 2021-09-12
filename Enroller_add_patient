@@ -1,0 +1,25 @@
+import requests
+import selenium
+from selenium import webdriver
+
+def enroler_Add_patient():
+    print("sample test case started")  
+    driver = webdriver.Chrome('/Applications/Google Chrome.app')  
+    #driver=webdriver.firefox()  
+    #driver=webdriver.ie()  
+    #maximize the window size  
+    driver.maximize_window()  
+    #navigate to the url  
+    driver.get("https://stagingccm.com/Patient/Create")  
+    #identify the Google search text box and enter the value  
+    driver.find_element_by_name("q").send_keys("javatpoint")
+    driver.find_element_by_id("firstName")  
+    time.sleep(3)  
+    #click on the Google search button  
+    # driver.find_element_by_name("btnK").send_keys(Keys.ENTER)  
+    # time.sleep(3)  
+    #close the browser  
+    driver.close()  
+    print("sample test case successfully completed")
+    
+enroler_Add_patient()
