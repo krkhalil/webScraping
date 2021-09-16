@@ -8,13 +8,7 @@ import selenium
 from selenium import webdriver
 import time
 
-
-try:
-    driver = webdriver.Chrome('C:/Users/Caretek/Downloads/chromedriver_win32/chromedriver') 
-except:
-    print('Chrome Driver is not found!')
-
-
+driver = webdriver.Chrome('C:/Users/Caretek/Downloads/chromedriver_win32/chromedriver') 
 def open_CCM():
     print("sample test case started 1")   
     driver.maximize_window()  
@@ -40,13 +34,25 @@ def username_password():
     driver.find_element_by_xpath('//*[@value="Login"]').click()
     
     time.sleep(5)
-    driver.close()  
+    # driver.close()  
     # element = driver.find_elements_by_class_name("login-form")
     # print(len(element))
 
-try:
-    open_CCM()
-    click_on_href()
-    username_password()
-except:
-    print('Something is wrong!')
+
+def get_qr_src():
+    try:
+        images = driver.find_elements_by_tag_name('img')
+        for image in images:
+            st=image.get_attribute('src')
+            print(st)
+            driver.close()
+    except:
+        print("Image is not available")
+        driver.close()
+
+
+
+open_CCM()
+click_on_href()
+username_password()
+get_qr_src()
