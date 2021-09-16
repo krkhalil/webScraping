@@ -8,7 +8,13 @@ import selenium
 from selenium import webdriver
 import time
 
-driver = webdriver.Chrome('C:/Users/Caretek/Downloads/chromedriver_win32/chromedriver') 
+
+try:
+    driver = webdriver.Chrome('C:/Users/Caretek/Downloads/chromedriver_win32/chromedriver') 
+except:
+    print('Chrome Driver is not found!')
+
+
 def open_CCM():
     print("sample test case started 1")   
     driver.maximize_window()  
@@ -38,6 +44,9 @@ def username_password():
     # element = driver.find_elements_by_class_name("login-form")
     # print(len(element))
 
-open_CCM()
-click_on_href()
-username_password()
+try:
+    open_CCM()
+    click_on_href()
+    username_password()
+except:
+    print('Something is wrong!')
