@@ -4,11 +4,23 @@ import bs4
 from bs4 import BeautifulSoup as bs
 import qrtools as q
 import requests
-import selenium
 from selenium import webdriver
 import time
+import base64
+import ssl
+# Ignore SSL certificate errors
 
-driver = webdriver.Chrome('C:/Users/Caretek/Downloads/chromedriver_win32/chromedriver') 
+try:
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+except:
+    print("SSL is not working")
+
+try:
+    driver = webdriver.Chrome('C:/Users/Caretek/Downloads/chromedriver_win32/chromedriver')
+except:
+    print("Driver Does not Connect")
 def open_CCM():
     print("sample test case started 1")   
     driver.maximize_window()  
@@ -45,7 +57,6 @@ def get_qr_src():
         for image in images:
             st=image.get_attribute('src')
             print(st)
-            driver.close()
     except:
         print("Image is not available")
         driver.close()
